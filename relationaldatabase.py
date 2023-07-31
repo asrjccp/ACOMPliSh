@@ -7,7 +7,7 @@ from langchain.chains.question_answering import load_qa_chain
 from langchain.llms import OpenAI
 from langchain.chat_models import ChatOpenAI
 import os
-os.environ["OPENAI_API_KEY"] = "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"
+os.environ["OPENAI_API_KEY"] = ""
 
 # Read the PDF File:
 reader = PdfReader("./pages/PDFs/rd.pdf")
