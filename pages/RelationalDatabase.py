@@ -37,12 +37,29 @@ st.divider()
     #st.write(response)
 
 
-with st.container():
-    question = st.chat_input("Enter your prompt here: ")
-    if question:
-        with st.chat_message("user"):
-            st.markdown(f"Q: {question}")
-            response = ask_GPT(question)
-            st.write(f"A: {response}")
+# with st.container():
+#     question = st.chat_input("Enter your prompt here: ")
+#     if question:
+#         with st.chat_message("user"):
+#             st.markdown(f"Q: {question}")
+#             response = ask_GPT(question)
+#             st.write(f"A: {response}")
 
 
+# Initialise a state to keep track of person response"
+if "messages" not in st.session_state:
+    st.session_state.messages = []
+
+for message in st.session_state.messages:
+    with st.chat_message(message["role"]):
+        st.markdown(message["content"])
+
+chat_box = st.chat_input("Enter your question")
+if chat_box:
+    with st.chat_message("user"):
+        st.markdown(chat_box)
+    st.session_state.messages.append({"role": "user", "content": chat_box})
+    response = ask_GPT(chat_box)
+    with st.chat_message("assistant"):
+        st.markdown(response)
+        st.session_state.messages.append({"role": "assistant", "content": response})
