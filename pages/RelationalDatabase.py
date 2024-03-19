@@ -1,5 +1,5 @@
 import streamlit as st
-from relationaldatabase import ask_GPT
+from cb_relationaldatabase import ask_GPT
 from langchain.prompts import PromptTemplate
 from PIL import Image
 st.set_page_config(
