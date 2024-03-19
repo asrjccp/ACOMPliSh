@@ -6,8 +6,6 @@ from langchain.vectorstores import ElasticVectorSearch, Pinecone, Weaviate, FAIS
 from langchain.chains.question_answering import load_qa_chain
 from langchain.llms import OpenAI
 from langchain.chat_models import ChatOpenAI
-import os
-os.environ["OPENAI_API_KEY"] = ""
 
 # Read the PDF File:
 reader = PdfReader("./pages/PDFs/rd.pdf")
@@ -34,7 +32,7 @@ embeddings = OpenAIEmbeddings()
 docsearch = FAISS.from_texts(texts, embeddings)
 
 # Chain with LangChain
-llm = ChatOpenAI(temperature=0.0)
+llm = ChatOpenAI(temperature=0.0, openai_api_key = st.secrets("OPENAI_API_KEY"))
 chain = load_qa_chain(llm = llm, chain_type="stuff")
 
 # Ask Questions
