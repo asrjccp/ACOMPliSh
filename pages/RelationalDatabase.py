@@ -26,25 +26,8 @@ if rd_definitions:
     st.markdown("**1NF (First Normal Form)**: **no** **:red[repeating fields/groups]**")
     st.markdown("**2NF (Second Normal Form)**: **no **:red[partial key]** dependency**.")
     st.markdown("**3NF (Third Normal Form)**: **no **:red[non-key]** dependency**.")
-
-
+    
 st.divider()
-
-
-# Show Prompt
-#if question:
-    #response = ask_GPT(question_template.format(topic = question))
-    #st.write(response)
-
-
-# with st.container():
-#     question = st.chat_input("Enter your prompt here: ")
-#     if question:
-#         with st.chat_message("user"):
-#             st.markdown(f"Q: {question}")
-#             response = ask_GPT(question)
-#             st.write(f"A: {response}")
-
 
 # Initialise a state to keep track of person response"
 if "messages" not in st.session_state:
