@@ -8,7 +8,7 @@ from langchain.llms import OpenAI
 from langchain.chat_models import ChatOpenAI
 
 # Read the PDF File:
-reader = PdfReader("./pages/PDFs/rd.pdf")
+reader = PdfReader("./documents/RelationalDatabase.pdf")
 
 # Read Data from Text:
 raw_text = ''
