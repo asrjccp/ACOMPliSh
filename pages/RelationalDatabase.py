@@ -11,7 +11,7 @@ st.caption("Click on the buttons for all the info!")
 # Template
 question_template = PromptTemplate(
     input_variables=['topic'],
-    template=''' You are a H2 Computing Tutor in Singapore and you are teaching relational databases.
+    template=''' You are a H2 Computing Tutor in Singapore and you are teaching {topic}.
     Your role is to give a summary on {topic} and make sure its only relevant to {topic}'''
 )
 
