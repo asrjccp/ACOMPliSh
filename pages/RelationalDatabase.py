@@ -22,7 +22,7 @@ with col1:
     rd_definitions = st.button("Definitions")
 if rd_definitions:
     st.markdown("**primary key:** **:red[unique identifier]** for each record in a database table")
-    #st.markdown("**foreign key**: column(s) in a database table that provides a **:red[link/relationship]** between data in two tables by referencing the primary key of the source table")
+    st.markdown("**foreign key**: column(s) in a database table that provides a **:red[link/relationship]** between data in two tables by referencing the primary key of the source table")
     st.markdown("**1NF (First Normal Form)**: **no** **:red[repeating fields/groups]**")
     st.markdown("**2NF (Second Normal Form)**: **no **:red[partial key]** dependency**.")
     st.markdown("**3NF (Third Normal Form)**: **no **:red[non-key]** dependency**.")
