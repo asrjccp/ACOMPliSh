@@ -5,7 +5,7 @@ st.set_page_config(
 )
 
 st.title("ACOMPliSh")
-st.caption("Credits: Initiated and developed by Mr Teh Kim Wee, alumni, Anderson Serangoon Junior College (class of 23/25)")
+st.caption("Credits: Developed by Mr Teh Kim Wee (class of 23/25), Anderson Serangoon Junior College.")
 st.markdown("**About**")
 st.markdown("ACOMPliSh aims to be a platform for A-level students to conveniently access and interact with H2 Computing learning content.")
 st.markdown("**How to use?**")
