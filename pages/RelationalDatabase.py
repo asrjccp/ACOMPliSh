@@ -6,8 +6,8 @@ st.set_page_config(
     page_title = "Relational Database",
     page_icon = "💻",
 )
-st.title('💻 Relational Database GPT')
-st.caption("Click on the buttons for all the info!")
+st.title('💻 Relational Database Computing tutor')
+st.caption("Ask me anything! :)")
 # Template
 question_template = PromptTemplate(
     input_variables=['topic'],
