@@ -1,11 +1,12 @@
 import streamlit as st
+from cb_oop import ask_GPT
 from PIL import Image
 st.set_page_config(
     page_title = "Object-Oriented Programming",
     page_icon = "💻",
 )
-st.title('💻 OOP GPT')
-st.caption("Click on the buttons for all the info!")
+st.title('💻 OOP Computing tutor')
+st.caption("Ask me anything! :)")
 
 col1, col2, col3 = st.columns(3)
 
