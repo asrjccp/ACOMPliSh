@@ -1,4 +1,5 @@
 import streamlit as st
+from cb_nosql import ask_GPT
 from PIL import Image
 st.set_page_config(
     page_title = "NoSQL",
