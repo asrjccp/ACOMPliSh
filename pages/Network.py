@@ -1,11 +1,12 @@
 import streamlit as st
+from cb_network import ask_GPT
 from PIL import Image
 st.set_page_config(
     page_title = "Computer Networks",
     page_icon = "💻",
 )
-st.title('💻 Network AMA')
-st.caption("Click on the buttons for all the info!")
+st.title('💻 Network Computing tutor')
+st.caption("Ask me anything! :)")
 
 col1, col2, col3 = st.columns(3)
 
