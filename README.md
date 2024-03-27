@@ -13,7 +13,7 @@ ACOMPliSh is a prompt-engineered generative AI web app to help A-level students 
 * Run `pip install -r requirements.txt` to install the needed Python modules
 * Create a folder called `.streamlit` in the root directory and create a file named `secrets.toml`
 * Enter your variable `OPENAI_API_KEY = "(insert your own API Key here)"`
-* In the root directory, use `streamlit run Acomplish.py` to launch the web-app
+* In the root directory, use `streamlit run ACOMPliSh.py` to launch the web-app
 * Create a pull request to update any content and do not sync directly to the repo
 ---
 ## Structure
