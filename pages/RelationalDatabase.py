@@ -1,5 +1,5 @@
 import streamlit as st
-from cb_relationaldatabase import ask_GPT
+from cb_relationaldatabase import answer_relationaldatabase
 from langchain.prompts import PromptTemplate
 from PIL import Image
 st.set_page_config(
@@ -42,7 +42,7 @@ if chat_box:
     with st.chat_message("user"):
         st.markdown(chat_box)
     st.session_state.messages.append({"role": "user", "content": chat_box})
-    response = ask_GPT(chat_box)
+    response = answer_relationaldatabase(chat_box)
     with st.chat_message("assistant"):
         st.markdown(response)
         st.session_state.messages.append({"role": "assistant", "content": response})

@@ -1,5 +1,5 @@
 import streamlit as st
-from cb_nosql import ask_GPT
+from cb_nosql import answer_nosql
 from PIL import Image
 st.set_page_config(
     page_title = "NoSQL",
@@ -35,7 +35,7 @@ if chat_box:
     with st.chat_message("user"):
         st.markdown(chat_box)
     st.session_state.messages.append({"role": "user", "content": chat_box})
-    response = ask_GPT(chat_box)
+    response = answer_nosql(chat_box)
     with st.chat_message("assistant"):
         st.markdown(response)
         st.session_state.messages.append({"role": "assistant", "content": response})

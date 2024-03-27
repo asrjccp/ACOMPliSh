@@ -1,5 +1,5 @@
 import streamlit as st
-from cb_network import ask_GPT
+from cb_network import answer_network
 from PIL import Image
 st.set_page_config(
     page_title = "Computer Networks",
@@ -35,7 +35,7 @@ if chat_box:
     with st.chat_message("user"):
         st.markdown(chat_box)
     st.session_state.messages.append({"role": "user", "content": chat_box})
-    response = ask_GPT(chat_box)
+    response = answer_network(chat_box)
     with st.chat_message("assistant"):
         st.markdown(response)
         st.session_state.messages.append({"role": "assistant", "content": response})

@@ -1,43 +1,35 @@
 import streamlit as st
-from PyPDF2 import PdfReader
-from langchain.embeddings.openai import OpenAIEmbeddings
-from langchain.text_splitter import CharacterTextSplitter
-from langchain.vectorstores import ElasticVectorSearch, Pinecone, Weaviate, FAISS
-from langchain.chains.question_answering import load_qa_chain
-from langchain.llms import OpenAI
-from langchain.chat_models import ChatOpenAI
+# From the Retrieval Augmented Generation Notebook
+from langchain_openai import ChatOpenAI, OpenAIEmbeddings
+from langchain_core.prompts import ChatPromptTemplate
+from langchain_community.vectorstores import FAISS
+from langchain_core.output_parsers import StrOutputParser
+from langchain_core.runnables import RunnableLambda, RunnablePassthrough
+from langchain_community.document_loaders import PyPDFLoader
+from operator import itemgetter
 
-# Read the PDF File:
-reader = PdfReader("./documents/Network.pdf")
+# Load in our PDF
+loader = PyPDFLoader("./documents/Network.pdf")
+# Split the text in the file for it to be digestible for the LLM
+pages = loader.load_and_split()
+# Set-Up our Vector Storage
+vectorstore = FAISS.from_documents(pages, embedding = OpenAIEmbeddings())
+# Retrieval Method
+retriever = vectorstore.as_retriever()
+# Prompt Template
+template = '''
+Answer the question based only on the following context
+{context}
 
-# Read Data from Text:
-raw_text = ''
+Question: {question}
+'''
+prompt = ChatPromptTemplate.from_template(template)
+# Connection with OpenAI
+llm = ChatOpenAI(api_key=st.secrets["OPENAI_API_KEY"])
 
-for i, page in enumerate(reader.pages):
-    text = page.extract_text()
-    if text:
-        raw_text += text
+# Chain
+chain = {"context": retriever, "question": RunnablePassthrough()} | prompt | llm | StrOutputParser()
 
-# Split Text Data:
-text_splitter = CharacterTextSplitter(
-    separator= "\n",
-    chunk_size = 1000,
-    chunk_overlap = 200,
-    length_function = len
-)
-texts = text_splitter.split_text(raw_text)
-
-# OpenAI Embeddings
-embeddings = OpenAIEmbeddings()
-docsearch = FAISS.from_texts(texts, embeddings)
-
-# Chain with LangChain
-llm = ChatOpenAI(temperature=0.0, openai_api_key=st.secrets["OPENAI_API_KEY"])
-chain = load_qa_chain(llm=llm, chain_type="stuff")
-
-# Ask Questions
-def ask_GPT(question):
-    query = question
-    docs = docsearch.similarity_search(query)
-    response = chain.run(input_documents=docs, question=query)
+def answer_network(question):
+    response = chain.invoke(question)
     return response
