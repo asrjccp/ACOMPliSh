@@ -41,8 +41,8 @@ ACOMPliSh/
 ## Quick-Start Guide with Streamlit
 * Streamlit mainly uses `Markdown` to present content and its way to format text, math equations and pictures are found <a href="https://docs.streamlit.io/library/api-reference">here</a>.
 * To present pictures in the web-app, put the image file in the `images` directory first and use this <a href="https://docs.streamlit.io/library/api-reference/media/st.image">method</a> to show the picture
-* To access the OPENAI_API_KEY, use "st.secrets["OPENAI_API_KEY"] to access the key
+* To access the OPENAI_API_KEY, use `st.secrets["OPENAI_API_KEY"]` to access the key
 ## Credits
-Core developer: Adapted from <a href= "https://github.com/DangerousPotential">Teh Kim Wee (23/25)</a>
+Core developer: Adapted from <a href= "https://github.com/DangerousPotential"> Teh Kim Wee (23/25)</a>
 Contributors: ASRJC Computing Students
 
