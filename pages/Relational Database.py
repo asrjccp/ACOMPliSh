@@ -1,11 +1,11 @@
 import streamlit as st
-from cb_relationaldatabase import answer_relationaldatabase
 from langchain.prompts import PromptTemplate
 from PIL import Image
 st.set_page_config(
     page_title = "Relational Database",
     page_icon = "💻",
 )
+from cb_relationaldatabase import answer_relational_database
 st.title(':rainbow[Relational Database]')
 st.caption("Ask me anything! :)")
 # Template
@@ -375,7 +375,7 @@ if chat_box:
     with st.chat_message("user"):
         st.markdown(chat_box)
     st.session_state.messages.append({"role": "user", "content": chat_box})
-    response = answer_relationaldatabase(chat_box)
+    response = answer_relational_database(chat_box)
     with st.chat_message("assistant"):
         st.markdown(response)
         st.session_state.messages.append({"role": "assistant", "content": response})

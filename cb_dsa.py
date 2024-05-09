@@ -21,7 +21,7 @@ def create_vector_storage(_documents):
     return vectorstore
 
 # Load, process, and create vector storage for your PDF document
-pdf_path = "./documents/objectop.pdf"
+pdf_path = "./documents/Data Structures and Algorithms.pdf"
 pages = load_and_split_pdf(pdf_path)
 vectorstore = create_vector_storage(pages)
 
@@ -43,6 +43,6 @@ llm = ChatOpenAI(api_key=st.secrets["OPENAI_API_KEY"], model="gpt-4-0125-preview
 # Define the processing chain
 chain = {"context": retriever, "question": RunnablePassthrough()} | prompt | llm | StrOutputParser()
 
-def answer_oop(question):
+def answer_dsa(question):
     response = chain.invoke(question)
     return response

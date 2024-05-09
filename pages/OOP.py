@@ -1,10 +1,10 @@
 import streamlit as st
-from cb_oop import answer_oop
 from PIL import Image
 st.set_page_config(
-    page_title = "Object-Oriented Programming",
+    page_title = "Object Oriented Programming",
     page_icon = "💻",
 )
+from cb_oop import answer_oop
 st.title(':rainbow[Object Oriented Programming]')
 st.caption("OOPs... How can we save the world with OOP?")
 
@@ -170,8 +170,6 @@ if oop_diagram:
     - The `Vehicle` class has attributes like `brand` and `model`.
     - The `Car` class inherits `Vehicle` and adds an attribute `year`.
     - The `Truck` class inherits `Vehicle` and adds an attribute `capacity`.
-
-    You can use tools like Lucidchart, Draw.io, or even simple drawing tools in office software to create class diagrams.
 
     Below is a textual representation of what a simple class diagram might look like:
     """)

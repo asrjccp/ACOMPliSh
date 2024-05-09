@@ -3,6 +3,7 @@ st.set_page_config(
     page_title= "Python Fundamentals",
     initial_sidebar_state= "auto"
 )
+from cb_python import answer_python
 st.title(":rainbow[Python Fundamentals]")
 
 # Create 3 colums to divide the buttons equally
@@ -333,7 +334,24 @@ def add_ten(number):
     st.markdown("We can now use the function and print the result in this manner:")
     st.markdown("`print(add_ten(5)`")
     st.markdown("**Output**: `15`")
-    
+st.divider()
+# Initialise a state to keep track of person response"
+if "messages" not in st.session_state:
+    st.session_state.messages = []
+
+for message in st.session_state.messages:
+    with st.chat_message(message["role"]):
+        st.markdown(message["content"])
+
+chat_box = st.chat_input("Enter your question")
+if chat_box:
+    with st.chat_message("user"):
+        st.markdown(chat_box)
+    st.session_state.messages.append({"role": "user", "content": chat_box})
+    response = answer_python(chat_box)
+    with st.chat_message("assistant"):
+        st.markdown(response)
+        st.session_state.messages.append({"role": "assistant", "content": response})
 
 
 

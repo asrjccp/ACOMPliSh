@@ -1,5 +1,6 @@
 import streamlit as st
 st.set_page_config(page_title = "Data Structures and Algorithms")
+from cb_dsa import answer_dsa
 st.title(":rainbow[Data Structure and Algorithms]")
 col1, col2, col3 = st.columns(3)
 with col1:
@@ -661,3 +662,20 @@ if b6:
     print(f'Target found: {result}' if result != 'Target not found' else 'Target not found')
     """, language="python")
 
+# Initialise a state to keep track of person response"
+if "messages" not in st.session_state:
+    st.session_state.messages = []
+
+for message in st.session_state.messages:
+    with st.chat_message(message["role"]):
+        st.markdown(message["content"])
+
+chat_box = st.chat_input("Enter your question")
+if chat_box:
+    with st.chat_message("user"):
+        st.markdown(chat_box)
+    st.session_state.messages.append({"role": "user", "content": chat_box})
+    response = answer_dsa(chat_box)
+    with st.chat_message("assistant"):
+        st.markdown(response)
+        st.session_state.messages.append({"role": "assistant", "content": response})
